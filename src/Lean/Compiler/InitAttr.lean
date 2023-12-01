@@ -138,7 +138,7 @@ def setBuiltinInitAttr (env : Environment) (declName : Name) (initFnName : Name 
 
 def declareBuiltin (forDecl : Name) (value : Expr) : CoreM Unit := do
   let name := `_regBuiltin ++ forDecl
-  let type := mkApp (mkConst `IO) (mkConst `Unit)
+  let type := mkApp (mkConst `IO [Level.zero]) (mkConst `Unit)
   let decl := Declaration.defnDecl { name, levelParams := [], type, value, hints := ReducibilityHints.opaque,
                                      safety := DefinitionSafety.safe }
   match (← getEnv).addAndCompile {} decl with

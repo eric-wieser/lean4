@@ -35,6 +35,7 @@ LEAN_EXPORT lean_object* l_Array_binSearchAux___at_Lean_registerInitAttrUnsafe__
 static lean_object* l_Lean_resolveGlobalConstNoOverload___at_Lean_registerInitAttrUnsafe___spec__5___closed__3;
 lean_object* l_Lean_Syntax_formatStxAux(lean_object*, uint8_t, lean_object*, lean_object*);
 LEAN_EXPORT lean_object* l_Lean_setBuiltinInitAttr(lean_object*, lean_object*, lean_object*);
+static lean_object* l_Lean_declareBuiltin___closed__13;
 static lean_object* l___auto____x40_Lean_Compiler_InitAttr___hyg_1423____closed__11;
 static lean_object* l_Lean_resolveGlobalConstNoOverload___at_Lean_registerInitAttrUnsafe___spec__5___closed__1;
 LEAN_EXPORT lean_object* l_Lean_registerInitAttrUnsafe___lambda__1(lean_object*, lean_object*, lean_object*, lean_object*, lean_object*);
@@ -4855,12 +4856,24 @@ _start:
 {
 lean_object* x_1; lean_object* x_2; lean_object* x_3; 
 x_1 = lean_box(0);
-x_2 = l_Lean_declareBuiltin___closed__3;
-x_3 = l_Lean_Expr_const___override(x_2, x_1);
+x_2 = lean_box(0);
+x_3 = lean_alloc_ctor(1, 2, 0);
+lean_ctor_set(x_3, 0, x_2);
+lean_ctor_set(x_3, 1, x_1);
 return x_3;
 }
 }
 static lean_object* _init_l_Lean_declareBuiltin___closed__5() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_Lean_declareBuiltin___closed__3;
+x_2 = l_Lean_declareBuiltin___closed__4;
+x_3 = l_Lean_Expr_const___override(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_Lean_declareBuiltin___closed__6() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; lean_object* x_3; 
@@ -4870,27 +4883,27 @@ x_3 = l_Lean_Name_str___override(x_1, x_2);
 return x_3;
 }
 }
-static lean_object* _init_l_Lean_declareBuiltin___closed__6() {
-_start:
-{
-lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = lean_box(0);
-x_2 = l_Lean_declareBuiltin___closed__5;
-x_3 = l_Lean_Expr_const___override(x_2, x_1);
-return x_3;
-}
-}
 static lean_object* _init_l_Lean_declareBuiltin___closed__7() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; lean_object* x_3; 
-x_1 = l_Lean_declareBuiltin___closed__4;
+x_1 = lean_box(0);
 x_2 = l_Lean_declareBuiltin___closed__6;
-x_3 = l_Lean_Expr_app___override(x_1, x_2);
+x_3 = l_Lean_Expr_const___override(x_2, x_1);
 return x_3;
 }
 }
 static lean_object* _init_l_Lean_declareBuiltin___closed__8() {
+_start:
+{
+lean_object* x_1; lean_object* x_2; lean_object* x_3; 
+x_1 = l_Lean_declareBuiltin___closed__5;
+x_2 = l_Lean_declareBuiltin___closed__7;
+x_3 = l_Lean_Expr_app___override(x_1, x_2);
+return x_3;
+}
+}
+static lean_object* _init_l_Lean_declareBuiltin___closed__9() {
 _start:
 {
 lean_object* x_1; 
@@ -4898,16 +4911,16 @@ x_1 = lean_mk_string_from_bytes("failed to emit registration code for builtin '"
 return x_1;
 }
 }
-static lean_object* _init_l_Lean_declareBuiltin___closed__9() {
+static lean_object* _init_l_Lean_declareBuiltin___closed__10() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; 
-x_1 = l_Lean_declareBuiltin___closed__8;
+x_1 = l_Lean_declareBuiltin___closed__9;
 x_2 = l_Lean_stringToMessageData(x_1);
 return x_2;
 }
 }
-static lean_object* _init_l_Lean_declareBuiltin___closed__10() {
+static lean_object* _init_l_Lean_declareBuiltin___closed__11() {
 _start:
 {
 lean_object* x_1; 
@@ -4915,16 +4928,16 @@ x_1 = lean_mk_string_from_bytes("': ", 3);
 return x_1;
 }
 }
-static lean_object* _init_l_Lean_declareBuiltin___closed__11() {
+static lean_object* _init_l_Lean_declareBuiltin___closed__12() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; 
-x_1 = l_Lean_declareBuiltin___closed__10;
+x_1 = l_Lean_declareBuiltin___closed__11;
 x_2 = l_Lean_stringToMessageData(x_1);
 return x_2;
 }
 }
-static lean_object* _init_l_Lean_declareBuiltin___closed__12() {
+static lean_object* _init_l_Lean_declareBuiltin___closed__13() {
 _start:
 {
 lean_object* x_1; lean_object* x_2; 
@@ -4941,7 +4954,7 @@ x_6 = l_Lean_declareBuiltin___closed__2;
 lean_inc(x_1);
 x_7 = l_Lean_Name_append(x_6, x_1);
 x_8 = lean_box(0);
-x_9 = l_Lean_declareBuiltin___closed__7;
+x_9 = l_Lean_declareBuiltin___closed__8;
 lean_inc(x_7);
 x_10 = lean_alloc_ctor(0, 3, 0);
 lean_ctor_set(x_10, 0, x_7);
@@ -4992,11 +5005,11 @@ x_26 = lean_ctor_get(x_24, 1);
 lean_inc(x_26);
 lean_dec(x_24);
 x_27 = l_Lean_MessageData_ofName(x_1);
-x_28 = l_Lean_declareBuiltin___closed__9;
+x_28 = l_Lean_declareBuiltin___closed__10;
 x_29 = lean_alloc_ctor(7, 2, 0);
 lean_ctor_set(x_29, 0, x_28);
 lean_ctor_set(x_29, 1, x_27);
-x_30 = l_Lean_declareBuiltin___closed__11;
+x_30 = l_Lean_declareBuiltin___closed__12;
 x_31 = lean_alloc_ctor(7, 2, 0);
 lean_ctor_set(x_31, 0, x_29);
 lean_ctor_set(x_31, 1, x_30);
@@ -5005,7 +5018,7 @@ lean_dec(x_25);
 x_33 = lean_alloc_ctor(7, 2, 0);
 lean_ctor_set(x_33, 0, x_31);
 lean_ctor_set(x_33, 1, x_32);
-x_34 = l_Lean_declareBuiltin___closed__12;
+x_34 = l_Lean_declareBuiltin___closed__13;
 x_35 = lean_alloc_ctor(7, 2, 0);
 lean_ctor_set(x_35, 0, x_33);
 lean_ctor_set(x_35, 1, x_34);
@@ -5340,6 +5353,8 @@ l_Lean_declareBuiltin___closed__11 = _init_l_Lean_declareBuiltin___closed__11();
 lean_mark_persistent(l_Lean_declareBuiltin___closed__11);
 l_Lean_declareBuiltin___closed__12 = _init_l_Lean_declareBuiltin___closed__12();
 lean_mark_persistent(l_Lean_declareBuiltin___closed__12);
+l_Lean_declareBuiltin___closed__13 = _init_l_Lean_declareBuiltin___closed__13();
+lean_mark_persistent(l_Lean_declareBuiltin___closed__13);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus
