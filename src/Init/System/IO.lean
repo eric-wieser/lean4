@@ -29,7 +29,7 @@ def IO.RealWorld : Type := Unit
    def getWorld : IO (IO.RealWorld) := get
    ```
 -/
-def EIO (ε : Type) : Type → Type := EStateM ε IO.RealWorld
+def EIO (ε : Type) : Type u → Type _ := EStateM ε IO.RealWorld
 
 instance : Monad (EIO ε) := inferInstanceAs (Monad (EStateM ε IO.RealWorld))
 instance : MonadFinally (EIO ε) := inferInstanceAs (MonadFinally (EStateM ε IO.RealWorld))
@@ -63,7 +63,7 @@ def EIO.catchExceptions (act : EIO ε α) (h : ε → BaseIO α) : BaseIO α :=
   | EStateM.Result.error ex s => h ex s
 
 open IO (Error) in
-abbrev IO : Type → Type := EIO Error
+abbrev IO : Type u → Type u := EIO Error
 
 @[inline] def BaseIO.toIO (act : BaseIO α) : IO α :=
   act

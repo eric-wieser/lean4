@@ -338,6 +338,8 @@ def parserOfStack.parenthesizer (offset : Nat) (_prec : Nat := 0) : Parenthesize
   let stx := st.stxTrav.parents.back.getArg (st.stxTrav.idxs.back - offset)
   parenthesizerForKind stx.getKind
 
+set_option trace.debug true
+
 @[builtin_category_parenthesizer term]
 def term.parenthesizer : CategoryParenthesizer | prec => do
   maybeParenthesize `term true wrapParens prec $
