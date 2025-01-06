@@ -51,7 +51,8 @@ def isTodo (name : Name) : M Bool := do
 
 /-- Use the current `Environment` to throw a `KernelException`. -/
 def throwKernelException (ex : KernelException) : M Unit := do
-    let ctx := { fileName := "", options := ({} : KVMap), fileMap := default }
+    let ctx := { fileName := "", options := ({} : KVMap), fileMap := default,
+                 initHeartbeats := ← IO.getNumHeartbeats }
     let state := { env := (← get).env }
     Prod.fst <$> (Lean.Core.CoreM.toIO · ctx state) do Lean.throwKernelException ex
 

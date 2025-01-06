@@ -104,7 +104,8 @@ def ContextInfo.runCoreM (info : ContextInfo) (x : CoreM α) : IO α := do
   (·.1) <$>
     (withOptions (fun _ => info.options) x).toIO
       { currNamespace := info.currNamespace, openDecls := info.openDecls
-        fileName := "<InfoTree>", fileMap := default }
+        fileName := "<InfoTree>", fileMap := default
+        initHeartbeats := ← IO.getNumHeartbeats }
       { env := info.env, ngen := info.ngen }
 
 def ContextInfo.runMetaM (info : ContextInfo) (lctx : LocalContext) (x : MetaM α) : IO α := do

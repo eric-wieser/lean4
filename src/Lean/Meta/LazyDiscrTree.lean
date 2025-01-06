@@ -966,6 +966,7 @@ private def createTreeCtx (ctx : Core.Context) : Core.Context := {
     options := ctx.options
     maxRecDepth := ctx.maxRecDepth
     maxHeartbeats := 0
+    initHeartbeats := 0
     ref := ctx.ref
     diag := getDiag ctx.options
   }

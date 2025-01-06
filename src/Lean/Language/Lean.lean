@@ -582,7 +582,9 @@ where
           let tree := SnapshotTree.mk { diagnostics := .empty } snaps
           BaseIO.bindTask (← tree.waitAll) fun _ => do
             let .ok (_, s) ← EIO.toBaseIO <| tree.trace |>.run
-              { ctx with options := cmdState.scopes.head!.opts } { env := cmdState.env }
+              { ctx with options := cmdState.scopes.head!.opts,
+                         initHeartbeats := ← IO.getNumHeartbeats }
+              { env := cmdState.env }
               | pure <| .pure <| .mk { diagnostics := .empty } #[]
             let mut msgLog := MessageLog.empty
             for trace in s.traceState.traces do

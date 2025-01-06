@@ -14,11 +14,12 @@ import Lean.Util.ShareCommon
 namespace Lean
 
 def PPContext.runCoreM {α : Type} (ppCtx : PPContext) (x : CoreM α) : IO α :=
-  Prod.fst <$> x.toIO { options := ppCtx.opts, currNamespace := ppCtx.currNamespace
-                        openDecls := ppCtx.openDecls
-                        fileName := "<PrettyPrinter>", fileMap := default
-                        diag     := getDiag ppCtx.opts }
-                      { env := ppCtx.env, ngen := { namePrefix := `_pp_uniq } }
+  Prod.fst <$> do x.toIO { options := ppCtx.opts, currNamespace := ppCtx.currNamespace
+                           openDecls := ppCtx.openDecls
+                           fileName := "<PrettyPrinter>", fileMap := default
+                           initHeartbeats := ← IO.getNumHeartbeats,
+                           diag     := getDiag ppCtx.opts }
+                         { env := ppCtx.env, ngen := { namePrefix := `_pp_uniq } }
 
 def PPContext.runMetaM {α : Type} (ppCtx : PPContext) (x : MetaM α) : IO α :=
   ppCtx.runCoreM <| x.run' { lctx := ppCtx.lctx } { mctx := ppCtx.mctx }
@@ -76,9 +77,10 @@ def ppConstNameWithInfos (constName : Name) : MetaM FormatWithInfos := do
 
 @[export lean_pp_expr]
 def ppExprLegacy (env : Environment) (mctx : MetavarContext) (lctx : LocalContext) (opts : Options) (e : Expr) : IO Format :=
-  Prod.fst <$> ((withOptions (fun _ => opts) <| ppExpr e).run' { lctx := lctx } { mctx := mctx }).toIO
-    { fileName := "<PrettyPrinter>", fileMap := default }
-    { env := env }
+  Prod.fst <$> do
+    ((withOptions (fun _ => opts) <| ppExpr e).run' { lctx := lctx } { mctx := mctx }).toIO
+      { fileName := "<PrettyPrinter>", fileMap := default, initHeartbeats := ← IO.getNumHeartbeats }
+      { env := env }
 
 def ppTactic (stx : TSyntax `tactic) : CoreM Format := ppCategory `tactic stx
 
