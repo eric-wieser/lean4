@@ -262,7 +262,7 @@ instance : EmptyCollection (FVarIdMap α) := inferInstanceAs (EmptyCollection (R
 instance : Inhabited (FVarIdMap α) where
   default := {}
 
-/-- Universe metavariable Id   -/
+/-- Metavariable Id   -/
 structure MVarId where
   name : Name
   deriving Inhabited, BEq, Hashable, Repr
