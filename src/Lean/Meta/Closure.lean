@@ -378,6 +378,7 @@ end Closure
   and `t_j`s are free and meta variables `type` and `value` depend on. -/
 def mkAuxDefinition (name : Name) (type : Expr) (value : Expr) (zetaDelta : Bool := false) (compile : Bool := true) : MetaM Expr := do
   let result ← Closure.mkValueTypeClosure type value zetaDelta
+  assert! !result.value.hasFVar  -- In case https://github.com/leanprover/lean4/issues/10705 resurfaces in a new way
   let env ← getEnv
   let hints := ReducibilityHints.regular (getMaxHeight env result.value + 1)
   let decl := Declaration.defnDecl (← mkDefinitionValInferringUnsafe name result.levelParams.toList
